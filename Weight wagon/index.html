@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+      body {
+        width: 100%;
+        margin-top: 10px;
+        background-color: #333;
+        color: #fff;
+        padding: 0px 20px;
+      }
+      .num {
+        width: 105%;
+        margin-left: 0px
+      }
+      .num2 {
+        width: 105%;
+        margin-left: -5px
+      }
+      .btn {
+        width: 89%;
+        margin-left: 15px
+      }
+      .card {
+        width: 115%;
+      }
+      .col2 {
+        width: 87%;
+        margin-top: 20px;
+        margin-left: 15px
+      }
+      .card-block {
+        padding-left: 5px
+        }
+    </style>
+  </head>
+  <body>
+    <form>
+      <div class="form-group col-md-6 offset-md-3">
+        <div id="input" class="row">
+          <div class="col">
+            <div class="number mb-2">
+              <input
+                type="number"
+                class="num"
+                id="number14006"
+                placeholder="14006"
+                class="form-control-lg"
+                onChange="edit_vag();">
+            </div>
+          </div>
+          <div class="col">
+            <div class="number mb-2">
+                <input
+                type="number"
+                class="num2"
+                id="number16932"
+                placeholder="1,6932"
+                class="form-control-lg"
+                onChange="edit_vag();">
+            </div>
+          </div>
+        </div>
+        <div id="input" class="row">
+            <div class="col">
+              <div class="number mb-2">
+                  <input
+                  type="number"
+                  class="num"
+                  id="number14062"
+                  placeholder="1,4062"
+                  class="form-control-lg"
+                  onChange="edit_vag();">
+              </div>
+            </div>
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num2"
+                id="number17251"
+                placeholder="1,7251"
+                class="form-control-lg"
+                onChange="edit_vag();">
+              </div>
+            </div>
+          </div>
+          <div id="input" class="row">
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num"
+                id="number1494"
+                placeholder="1,494"
+                class="form-control-lg"
+                onChange="edit_vag();"> 
+              </div>
+            </div>
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num2"
+                id="number1743"
+                placeholder="1,743"
+                class="form-control-lg"
+                onChange="edit_vag();">
+              </div>
+            </div>
+          </div>
+          <div id="input" class="row">
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num"
+                id="number15"
+                placeholder="1,5"
+                class="form-control-lg"
+                onChange="edit_vag();">
+              </div>
+            </div>
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num2"
+                id="number175"
+                placeholder="1,75"
+                class="form-control-lg"
+                onChange="edit_vag();">
+              </div>
+            </div>
+          </div>
+          <div id="input" class="row">
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num"
+                id="number16434"
+                placeholder="1,6434"
+                class="form-control-lg"
+                onChange="edit_vag();">  
+              </div>
+            </div>
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num2"
+                id="number18113"
+                placeholder="1,8113"
+                class="form-control-lg"
+                onChange="edit_vag();">  
+              </div>
+            </div>
+          </div>
+          <div id="input" class="row">
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num"
+                id="number16808"
+                placeholder="1,6808"
+                class="form-control-lg"
+                onChange="edit_vag();">    
+              </div>
+            </div>
+            <div class="col">
+              <div class="number mb-2">
+                <input
+                type="number"
+                class="num2"
+                id="number1875"
+                placeholder="1,875"
+                class="form-control-lg"
+                onChange="edit_vag();">    
+              </div>
+            </div>
+          </div>
+        </div>
+     </form>
+      <div id="output" class="row col-md-6">
+        <div class="col">
+          <div class="card alert-success">
+            <div class="card-block mb-2">
+              <h5>Полувагоны:</h5>
+              <div id="pvag"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col2">
+          <div class="card alert-warning">
+            <div class="card-block mb-2">
+              <h5>Крытые:</h5>
+              <div id="kvag"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+          <button type="button" id="clearButton" class="btn btn-primary" onClick="button_clear();">
+            Очистить значения
+          </button>
+        <br /><br />
+          <button type="button" id="sidebarClose" class="btn btn-danger" onClick="button_close();">
+            Закрыть сайдбар
+          </button>
+    <script>
+      function roundToTwo(floatNumber) {
+        return parseFloat((Math.round(floatNumber * 100) / 100).toFixed(2));
+      }
+      
+      function edit_vag() {
+        var n14006 = document.getElementById('number14006').value;
+        var n14062 = document.getElementById('number14062').value;
+        var n1494 = document.getElementById('number1494').value;
+        var n15 = document.getElementById('number15').value;
+        var n16434 = document.getElementById('number16434').value;
+        var n16808 = document.getElementById('number16808').value;
+        var n16932 = document.getElementById('number16932').value;
+        var n17251 = document.getElementById('number17251').value;
+        var n1743 = document.getElementById('number1743').value;
+        var n175 = document.getElementById('number175').value;
+        var n18113 = document.getElementById('number18113').value;
+        var n1875 = document.getElementById('number1875').value;
+        var sum1 = roundToTwo((n14006 * 1.4006 + n14062 * 1.4062 + n1494 * 1.494 + n15 * 1.5 + 
+          n16434 * 1.6434 + n16808 * 1.6808 + n16932 * 1.6932 + n17251 * 1.7251 + n1743 * 1.743 + 
+          n175 * 1.75 + n18113 * 1.8113 + n1875 * 1.875) * 0.639351);
+        document.getElementById('pvag').innerHTML = roundToTwo(sum1 + 3) + "/ " + roundToTwo(sum1);
+        document.getElementById('kvag').innerHTML = roundToTwo(sum1 + 1.8) + "/ " + roundToTwo(sum1);
+      }
+      
+      function button_close() { 
+        google.script.host.close();
+      }
+      
+      function button_clear() {
+        // Если необходимо предотвратить/отменить событие по умолчанию,
+        // то необходимо вызвать метод preventDefault у события
+        // https://developer.mozilla.org/ru/docs/Web/API/Event/preventDefault
+        // e.preventDefault();
+        // если необходимо также предотвратить дальнейшее "всплытие" события,
+        // то необходимо вызвать метод stopPropagation у события
+        // https://developer.mozilla.org/ru/docs/Web/API/Event/stopPropagation
+        // e.stopPropagation();
+        document.getElementById('number14006').value = "";
+        document.getElementById('number14062').value = "";
+        document.getElementById('number1494').value = "";
+        document.getElementById('number15').value = "";
+        document.getElementById('number16434').value = "";
+        document.getElementById('number16808').value = "";
+        document.getElementById('number16932').value = "";
+        document.getElementById('number17251').value = "";
+        document.getElementById('number1743').value = "";
+        document.getElementById('number175').value = "";
+        document.getElementById('number18113').value = "";
+        document.getElementById('number1875').value = "";
+        document.getElementById('pvag').value = "";
+        document.getElementById('kvag').value = "";
+      }
+    </script>
+  </body>
+</html>
+
+
